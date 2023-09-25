@@ -1,5 +1,5 @@
 CC := gcc
-CFLAGS := -lm
+CFLAGS := -O3 -lm
 
 SRC_DIR := src
 BUILD_DIR := build

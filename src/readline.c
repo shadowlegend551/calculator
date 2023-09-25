@@ -1,4 +1,4 @@
-#include "readline.h"
+#include "../include/readline.h"
 
 #include <stdio.h>
 #include <stdlib.h>

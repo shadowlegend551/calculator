@@ -1,6 +1,6 @@
-#include "tokenqueue.h"
-#include "exceptions/exceptionslib.h"
-#include "token.h"
+#include "../include/tokenqueue.h"
+#include "../include/exceptionslib.h"
+#include "../include/token.h"
 
 #include <stdlib.h>
 #include <string.h>

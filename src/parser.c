@@ -1,6 +1,8 @@
-#include "token.h"
-#include "tokenqueue.h"
-#include "tokenstack.h"
+#include "../include/parser.h"
+#include "../include/token.h"
+#include "../include/tokenqueue.h"
+#include "../include/tokenstack.h"
+#include "../include/tokenqueue.h"
 
 #include <stdlib.h>
 #include <string.h>

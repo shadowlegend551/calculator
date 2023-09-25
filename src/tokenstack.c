@@ -1,5 +1,5 @@
-#include "tokenstack.h"
-#include "exceptions/exceptionslib.h"
+#include "../include/tokenstack.h"
+#include "../include/exceptionslib.h"
 
 #include <stdlib.h>
 #include <string.h>

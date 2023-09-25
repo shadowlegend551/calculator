@@ -1,9 +1,9 @@
-#include "evaluator.h"
-#include "exceptions/exceptionslib.h"
-#include "functions.h"
-#include "isin.h"
-#include "tokenstack.h"
-#include "tokenqueue.h"
+#include "../include/evaluator.h"
+#include "../include/exceptionslib.h"
+#include "../include/functions.h"
+#include "../include/isin.h"
+#include "../include/tokenstack.h"
+#include "../include/tokenqueue.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -21,7 +21,7 @@ Token* evaluate_rpn(Queue* rpn)
     MathFunctionPointer function;
     double* function_arguments;
     double function_result;
-    
+
     while((current_token = qpop(rpn)))
     {
         if(current_token->type == NUMBER) { spush(current_token, temp_stack); }
@@ -37,7 +37,7 @@ Token* evaluate_rpn(Queue* rpn)
 
         else if(current_token->type == OPERATOR)
         {
-            
+
             second_operand = spop(temp_stack);
             first_operand = spop(temp_stack);
 
@@ -68,7 +68,7 @@ Token* evaluate_rpn(Queue* rpn)
                 first_operand->value.number /
                 second_operand->value.number;
             }
-                
+
             else if(!strcmp(current_token->value.string, "^"))
             {
                 result =

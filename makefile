@@ -1,2 +1,22 @@
-all:
-	gcc -o main -O3 main.c readline.c tokenstack.c tokenqueue.c evaluator.c exceptions/exceptions.c exceptions/exceptionslib.c conversions.c token.c tokenizer.c isin.c functions.c constants.c parser.c -lm
+CC := gcc
+CFLAGS := -lm
+
+SRC_DIR := src
+BUILD_DIR := build
+TARGET_FILE := bin/main
+
+SRC_FILES := $(wildcard $(SRC_DIR)/*.c)
+OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC_FILES))
+
+
+$(TARGET_FILE): $(OBJ_FILES)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) -c $< -o $@
+
+clean:
+	rm $(OBJ_FILES) $(TARGET_FILE)
+
+.PHONY:
+	clean

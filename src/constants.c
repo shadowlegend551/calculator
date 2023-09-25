@@ -1,4 +1,4 @@
-#include "constants.h"
+#include "../include/constants.h"
 
 #include <stdio.h>
 #include <string.h>

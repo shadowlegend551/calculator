@@ -1,9 +1,9 @@
-#include "tokenizer.h"
-#include "constants.h"
-#include "conversions.h"
-#include "exceptions/exceptionslib.h"
-#include "functions.h"
-#include "isin.h"
+#include "../include/tokenizer.h"
+#include "../include/constants.h"
+#include "../include/conversions.h"
+#include "../include/exceptionslib.h"
+#include "../include/functions.h"
+#include "../include/isin.h"
 
 #include <stdio.h>
 #include <stdlib.h>

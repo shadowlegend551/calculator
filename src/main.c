@@ -1,13 +1,13 @@
-#include "conversions.h"
-#include "evaluator.h"
-#include "exceptions/exceptionslib.h"
-#include "functions.h"
-#include "parser.h"
-#include "readline.h"
-#include "token.h"
-#include "tokenizer.h"
-#include "tokenqueue.h"
-#include "tokenstack.h"
+#include "../include/conversions.h"
+#include "../include/evaluator.h"
+#include "../include/exceptionslib.h"
+#include "../include/functions.h"
+#include "../include/parser.h"
+#include "../include/readline.h"
+#include "../include/token.h"
+#include "../include/tokenizer.h"
+#include "../include/tokenqueue.h"
+#include "../include/tokenstack.h"
 
 #include <stdio.h>
 #include <stdlib.h>

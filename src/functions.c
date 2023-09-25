@@ -1,8 +1,8 @@
-#include "functions.h"
-#include "constants.h"
-#include "conversions.h"
-#include "exceptions/exceptionslib.h"
-#include "isin.h"
+#include "../include/functions.h"
+#include "../include/constants.h"
+#include "../include/conversions.h"
+#include "../include/exceptionslib.h"
+#include "../include/isin.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,6 +53,7 @@ double modulo(double* number_array)
 
     return result;
 }
+
 
 double rad_to_deg(double* number_array)
 {
@@ -123,7 +124,6 @@ double* parse_args(char* arguments_string)
 
     while(*arguments_string)
     {
-        
         if(is_in(*arguments_string, numbers) || *arguments_string == '-')
         {
             argument_length = 0;

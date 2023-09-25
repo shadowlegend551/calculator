@@ -1,5 +1,5 @@
-#include "token.h"
-#include "exceptions/exceptionslib.h"
+#include "../include/token.h"
+#include "../include/exceptionslib.h"
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -8,8 +8,6 @@
 
 Token* init_token(TokenType type, ...)
 {
-    char* original_string;
-    char* value_ptr;
     va_list token_value;
     va_start(token_value, type);
     
@@ -25,8 +23,8 @@ Token* init_token(TokenType type, ...)
         case OPERATOR:
         case LEFT_PAREN:
         case RIGHT_PAREN:
-            original_string = va_arg(token_value, char*);
-            value_ptr = malloc(strlen(original_string)+1);
+            char* original_string = va_arg(token_value, char*);
+            char* value_ptr = malloc(strlen(original_string)+1);
             if(!value_ptr) { throw(memory_allocation_error); }
             
             strcpy(value_ptr, original_string);

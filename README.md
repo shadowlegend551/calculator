@@ -1,1 +1,8 @@
-#cCalculator
+cCalculator
+-----------
+
+
+
+INSTALLATION
+------------
+

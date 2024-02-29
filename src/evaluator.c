@@ -22,51 +22,56 @@ Token* evaluate_rpn(Queue* rpn)
     double* function_arguments;
     double function_result;
 
+
     while((current_token = qpop(rpn)))
     {
-        if(current_token->type == NUMBER) { spush(current_token, temp_stack); }
 
-        else if(current_token->type == FUNCTION)
+        switch(current_token->type)
         {
+        case NUMBER:
+            spush(current_token, temp_stack);
+            break;
+
+
+        case FUNCTION:
             function = current_token->value.function.function;
             function_arguments = current_token->value.function.args;
             result = function(function_arguments);
-            
+
             spush(init_token(NUMBER, result), temp_stack);
-        }
+            break;
 
-        else if(current_token->type == OPERATOR)
-        {
-
+            
+        case OPERATOR:
             second_operand = spop(temp_stack);
             first_operand = spop(temp_stack);
 
             if(!strcmp(current_token->value.string, "+"))
             {
                 result =
-                first_operand->value.number +
-                second_operand->value.number;
+                first_operand->value.number
+                + second_operand->value.number;
             }
 
             else if(!strcmp(current_token->value.string, "-"))
             {
                 result =
-                first_operand->value.number -
-                second_operand->value.number;
+                first_operand->value.number
+                - second_operand->value.number;
             }
 
             else if(!strcmp(current_token->value.string, "*"))
             {
                 result =
-                first_operand->value.number *
-                second_operand->value.number;
+                first_operand->value.number
+                * second_operand->value.number;
             }
 
             else if(!strcmp(current_token->value.string, "/"))
             {
                 result =
-                first_operand->value.number /
-                second_operand->value.number;
+                first_operand->value.number
+                / second_operand->value.number;
             }
 
             else if(!strcmp(current_token->value.string, "^"))
@@ -78,9 +83,12 @@ Token* evaluate_rpn(Queue* rpn)
 
             free(current_token); current_token = NULL;
             free(second_operand); second_operand = NULL;
-            
             spush(init_token(NUMBER, result), temp_stack);
+
+            break;
         }
     }
+
+    // Final token is the result.
     return spop(temp_stack);
 }

@@ -1,24 +1,44 @@
 #include "../include/readline.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
 char* readline(void)
 {
-    char* line = malloc(1);
-    if(!line) { return NULL; }
-    int increment = 0;
+    int buffer_size = 128;
+    char* buffer = malloc(buffer_size);
+    if(!buffer) { return NULL; }
+
+    int write_offset = 0;
     char character;
-    
+    char* realloc_holder;
+
     while((character = getchar()) && character != '\n')
     {
-        line[increment] = character;
-        increment++;
-        
-        line = realloc(line, increment+1);
-        if(!line) { return NULL; }
+        if(write_offset == buffer_size)
+        {
+            buffer_size *= 2;
+            realloc_holder = realloc(buffer, buffer_size);
+            if(!realloc_holder)
+            {
+                free(buffer);
+                return NULL;
+            }
+            buffer = realloc_holder;
+        }
+
+        buffer[write_offset] = character;
+        write_offset++;
     }
-    
-    line[increment] = '\0';
-    return line;
+
+    realloc_holder = realloc(buffer, write_offset+1);
+    if(!realloc_holder)
+    {
+        free(buffer);
+        return NULL;
+    }
+
+    buffer = realloc_holder;
+    buffer[write_offset] = '\0';
+
+    return buffer;
 }

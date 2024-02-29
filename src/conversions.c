@@ -8,9 +8,8 @@
 int ten_pow(int base, int power)
 {
     for(int i = 1; i < power; i++)
-    {
         base *= 10;
-    }
+
     return base;
 }
 
@@ -50,8 +49,7 @@ int stoi(char* string)
         string++;
     }
 
-    return_value = is_negative ? return_value * -1 : return_value;
-    return return_value;
+    return is_negative ? return_value * -1 : return_value;
 
     
 }
@@ -73,7 +71,6 @@ double stod(char* string)
     // Convert the whole part to double.
     while(*whole_part_end && *whole_part_end != '.')
     {
-        
         whole_part_end++;
         whole_length++;
     }
@@ -107,9 +104,8 @@ double stod(char* string)
 
         // Same as fraction_part * 10^-fraction_length.
         for(int i = 0; i < fraction_length; i++)
-        {
             fraction_part /= 10;
-        }
+
         return whole_part + fraction_part;
     }
     

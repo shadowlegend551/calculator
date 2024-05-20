@@ -11,7 +11,7 @@ Token* init_token(TokenType type, ...)
 {
     va_list token_value;
     va_start(token_value, type);
-    
+
     Token* token = malloc(sizeof(Token));
     if(!token)
         throw(memory_allocation_error);
@@ -30,12 +30,12 @@ Token* init_token(TokenType type, ...)
 
         if(!value_ptr)
             throw(memory_allocation_error);
-            
+
         strcpy(value_ptr, original_string);
         token->value.string = value_ptr;
-            
+
         break;
-        
+
     case FUNCTION:
         token->value.function.function = va_arg(token_value, MathFunctionPointer);
         token->value.function.args = va_arg(token_value, double*);
@@ -45,6 +45,7 @@ Token* init_token(TokenType type, ...)
 
     token->type = type;
     va_end(token_value);
-    
+
     return token;
 }
+

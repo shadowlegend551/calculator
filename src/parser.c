@@ -1,11 +1,12 @@
+#include <stdlib.h>
+#include <string.h>
+
 #include "../include/parser.h"
 #include "../include/token.h"
 #include "../include/tokenqueue.h"
 #include "../include/tokenstack.h"
 #include "../include/tokenqueue.h"
 
-#include <stdlib.h>
-#include <string.h>
 
 Queue* generate_rpn(Queue* input_queue)
 {
@@ -61,8 +62,9 @@ Queue* generate_rpn(Queue* input_queue)
             if(!stack_holder) { return NULL; }
         }
     }
-    
+
     while((current_token = spop(operator_stack))) { qpush(current_token, output_queue); }
-    
+
     return output_queue;
 }
+

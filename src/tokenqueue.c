@@ -1,22 +1,23 @@
-#include "../include/tokenqueue.h"
-#include "../include/exceptionslib.h"
-#include "../include/token.h"
-
 #include <stdlib.h>
 #include <string.h>
+
+include "../include/tokenqueue.h"
+#include "../include/exceptionslib.h"
+#include "../include/token.h"
 
 Queue* init_queue(void)
 {
     Queue* new_queue = malloc(sizeof(Queue));
     if(!new_queue) { throw(memory_allocation_error); }
-    
+
     new_queue->queue = malloc(sizeof(Token**));
     if(!new_queue->queue) { throw(memory_allocation_error); }
 
     new_queue->length = 0;
-    
+
     return new_queue;
 }
+
 
 // Pushes a value onto the queue.
 void qpush(Token* token, Queue* queue)
@@ -28,23 +29,25 @@ void qpush(Token* token, Queue* queue)
     if(!queue->queue) { throw(memory_reallocation_error); }
 }
 
+
 // Pops the bottommost value off the queue.
 Token* qpop(Queue* queue)
 {
     if(!queue->length) { return NULL; } 
     queue->length--;
-    
+
     Token* return_token = queue->queue[0];
 
     for(int i = 0; i < queue->length; i++)
     {
         queue->queue[i] = queue->queue[i+1];
     }
-    
+
     queue->queue = realloc(queue->queue, sizeof(Token**)*queue->length+1);
     if(!queue->queue) { throw(memory_reallocation_error); }
     return return_token;
 }
+
 
 // Deletes a queue instance safely.
 void qdelete(Queue** queue)
@@ -70,3 +73,4 @@ void qdelete(Queue** queue)
         *queue = NULL;
     }
 }
+

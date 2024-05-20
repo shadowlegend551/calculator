@@ -20,7 +20,7 @@ Token* tokenize_number(char** input_string)
 
     while(is_in((*input_string)[token_length], numbers))
         token_length++;
-    
+
     char* token_value = malloc(token_length+NULL_TERMINATOR_HOLDER);
     if(!token_value)
         throw(memory_allocation_error);
@@ -39,7 +39,7 @@ Token* tokenize_number(char** input_string)
 Token* tokenize_constant(char** input_string)
 {
     int constant_length = 0;
-    
+
     while(is_in((*input_string)[constant_length], upper_case_alphabet))
         constant_length++;
 
@@ -49,7 +49,7 @@ Token* tokenize_constant(char** input_string)
 
     strncpy(token_value, *input_string, constant_length);
     token_value[constant_length] = '\0';
-    
+
     double constant_value = get_constant_value(token_value);
 
     free(token_value); token_value = NULL;
@@ -62,7 +62,7 @@ Token* tokenize_constant(char** input_string)
 Token* tokenize_operator(char* input_string, char** offset)
 {
     int token_length = 0;
-    
+
     while(is_in(input_string[token_length], operators))
         token_length++;
     *offset += token_length;
@@ -86,7 +86,7 @@ Token* tokenize_parenthesis(char parenthesis, char** offset)
         throw(memory_allocation_error);
 
     (*offset)++;
-    
+
     if(parenthesis == '(')
     {
         *token_value = "(\0";
@@ -102,7 +102,7 @@ Token* tokenize_parenthesis(char parenthesis, char** offset)
 Token* tokenize_function(char* input_string, char** offset)
 {
     int function_name_length = 0;
-            
+
     while(input_string[function_name_length] != '(')
         function_name_length++;
 
@@ -121,7 +121,7 @@ Token* tokenize_function(char* input_string, char** offset)
     // Skip the first parenthesis.
     int function_args_base = function_name_length + 1;
     int args_length = 0;
-    
+
 
     // Get the arguments.
     while(input_string[function_args_base+args_length] != ')')
@@ -130,13 +130,13 @@ Token* tokenize_function(char* input_string, char** offset)
     char* function_args = malloc(args_length+NULL_TERMINATOR_HOLDER);
     if(!function_args)
         throw(memory_allocation_error);
-            
+
     strncpy(function_args, input_string+function_args_base, args_length);
     function_args[args_length] = '\0';
 
     // Skip right parenthesis.
     function_args_base += 1;
-    
+
     double* args_pointer = parse_args(function_args);
 
     free(function_args); function_args = NULL;
@@ -162,7 +162,7 @@ Queue* tokenize(char* input_string)
             input_string += 1;
             continue;
         }
-        
+
         // If token is a numeric literal.
         else if(is_in(*input_string, numbers) || *input_string == '-')
         {
@@ -197,5 +197,7 @@ Queue* tokenize(char* input_string)
 
         qpush(current_token, output_queue);
     }
+
     return output_queue;
 }
+

@@ -1,15 +1,14 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "../include/evaluator.h"
 #include "../include/exceptionslib.h"
 #include "../include/functions.h"
 #include "../include/isin.h"
 #include "../include/tokenstack.h"
 #include "../include/tokenqueue.h"
-
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 
 Token* evaluate_rpn(Queue* rpn)
 {
@@ -84,11 +83,11 @@ Token* evaluate_rpn(Queue* rpn)
             free(current_token); current_token = NULL;
             free(second_operand); second_operand = NULL;
             spush(init_token(NUMBER, result), temp_stack);
-
             break;
         }
     }
 
-    // Final token is the result.
+    // Remaining token is the result.
     return spop(temp_stack);
 }
+

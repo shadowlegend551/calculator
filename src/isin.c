@@ -1,6 +1,6 @@
-#include "../include/isin.h"
-
 #include <string.h>
+
+#include "../include/isin.h"
 
 char* lower_case_alphabet = "abcdefghijklmnopqrstuvwxyz";
 char* upper_case_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -18,3 +18,4 @@ int is_in(char character, char* list_of_characters)
 
     return 0;
 }
+

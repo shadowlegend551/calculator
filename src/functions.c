@@ -39,6 +39,7 @@ double factorial(double* number_array)
     return result;
 }
 
+
 double modulo(double* number_array)
 {
     double result = number_array[1];
@@ -56,6 +57,7 @@ double rad_to_deg(double* number_array)
 
     return radians * (180 / PI);
 }
+
 
 
 double square_root(double* number_array)

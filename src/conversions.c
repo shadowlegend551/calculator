@@ -1,8 +1,8 @@
-#include "../include/conversions.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+#include "../include/conversions.h"
 
 // Returns base*10^power
 int ten_pow(int base, int power)
@@ -21,6 +21,7 @@ int ctoi(char character)
     // 0's ASCII value is 48.
     return (int)character - '0';
 }
+
 
 int stoi(char* string)
 {
@@ -49,18 +50,17 @@ int stoi(char* string)
         string++;
     }
 
-    return is_negative ? return_value * -1 : return_value;
-
-    
+    return is_negative ? return_value * -1 : return_value;    
 }
+
 
 char* dtos(double number)
 {
     char* string = malloc(26);
     sprintf(string, "%f", number);
-    return string;
-    
+    return string;    
 }
+
 
 double stod(char* string)
 {
@@ -111,3 +111,4 @@ double stod(char* string)
     
     return whole_part;
 }
+

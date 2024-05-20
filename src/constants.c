@@ -1,7 +1,7 @@
-#include "../include/constants.h"
-
 #include <stdio.h>
 #include <string.h>
+
+#include "../include/constants.h"
 
 const double PI = 3.141592653589793;
 const double E = 2.718281828459045;
@@ -13,3 +13,4 @@ double get_constant_value(char* input_string)
     if(!strcmp(input_string, "E")) { return E; }
     if(!strcmp(input_string, "FI")) { return FI; }
 }
+

@@ -1,6 +1,7 @@
-#include "../include/readline.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#include "../include/readline.h"
 
 char* readline(void)
 {
@@ -42,3 +43,4 @@ char* readline(void)
 
     return buffer;
 }
+

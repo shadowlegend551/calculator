@@ -89,12 +89,12 @@ Token* tokenize_parenthesis(char parenthesis, char** offset)
 
     if(parenthesis == '(')
     {
-        *token_value = "(\0";
+        token_value = "(\0";
         return init_token(LEFT_PAREN, token_value);
     }
 
     // If parenthesis is not left parenthesis, it must be right.
-    *token_value = ")\0";
+    token_value = ")\0";
     return init_token(RIGHT_PAREN, token_value);
 }
 

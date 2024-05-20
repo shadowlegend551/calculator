@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-include "../include/tokenqueue.h"
+#include "../include/tokenqueue.h"
 #include "../include/exceptionslib.h"
 #include "../include/token.h"
 

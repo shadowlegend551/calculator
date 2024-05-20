@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-include "../include/tokenstack.h"
+#include "../include/tokenstack.h"
 #include "../include/exceptionslib.h"
 
 // Initializes an empty stack.
